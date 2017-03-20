@@ -25,7 +25,11 @@ Log4net
 Moq  
 	https://github.com/moq/moq4
 
-Configuration 
+Configuration
+Login:
+
+The Login Account checks for the username and password and stores the value to sessions. It is for show and main goal is to grab a username for the user.
+
 Email Account: 
 Must be Gmail, the reason for this is because they are the easiest provider that allow you to send email through their system. There is no configuration to modify the SMTP Server or the port. I have provided an account which credentials are held in the web.config. To modify to another google account please alter the web.config in app setting 
 <add key="userEmail" value="TestAppAdyp1234@gmail.com"/>
