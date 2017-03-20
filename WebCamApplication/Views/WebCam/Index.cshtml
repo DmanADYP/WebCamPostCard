@@ -1,0 +1,73 @@
+﻿@model WebCamApplication.ViewModels._ViewModelCam
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/PostCardApp.js"></script>
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/Content/PostCardApp.css" rel="stylesheet" />
+<h2>Post Card App</h2>
+
+<div class="row">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "drawingForm" }))
+    {
+        <div>
+            <center>
+                <video id="video" width="600" height="600" autoplay>   </video>
+                <canvas id="canvas" width="600" height="600">Your browser does not support the HTML5 canvas tag.</canvas>
+                <div class="InputFields">
+                    <div>@Html.Label("Enter Text Here For Post Card")</div>
+                    <input type="text" id="someInput" maxlength="24" />
+                    <div>@Html.Label(" Enter To Email Address")</div>
+                    <div>@Html.TextBox("EmailAddress")</div>
+                    <input type="hidden" name="imageData" id="imageData" />
+                    <input type="submit" class="btnSave" value="Email" name="Email" /><br />
+                    <input type="submit" class="btnSave" value="Save Image To Browser" name="Save" />
+                    <input type="submit" id="HelpBtn"  value="Help" name="Help"/>
+                    <div id="dialog" title="How To Use The App">
+                        <ul>
+                            <li>To Email Post Card Enter In Recipients Email Adress In Input Below EmailAddress And Click Button Email</li>
+                            <li>To Save Image To Page Click the Button Save Image To Browser </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="shutter"></div>
+            </center>
+        </div>
+
+
+    }
+
+
+
+</div>
+
+
+<script type="text/javascript">    //7007
+    
+    $("#dialog").dialog({});
+
+    $("#HelpBtn").click(function () {
+            $("#dialog").show();
+        });
+   
+    $(".btnSave").click(function () {
+        var form = $("#drawingForm");
+        var image = document.getElementById("canvas").toDataURL("image/png");
+        image = image.replace('data:image/png;base64,', '');
+        $("#imageData").val(image);
+        $('#shutter').addClass('on');
+        
+        setTimeout(function () {
+            $('#shutter').removeClass('on');
+        }, 30 * 2 + 45);/* Shutter speed (double & add 45) */
+        form.submit();
+    });
+   
+   
+   
+
+</script>
