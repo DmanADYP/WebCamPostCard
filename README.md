@@ -1,4 +1,5 @@
-
+# WebCamPostCard
+Generates Post Cards From Web Cams
 Synopsis
 
 This application was developed to utilize the web camera and make a small modification to the image and, then either save the image to the page, or Email to a recipient.
@@ -45,6 +46,5 @@ Tests:
 The project utilizes 3 tests. Test 1 mocks httpcontext to test the write to the screen. Test 2 tests the Emailimage class and its output. Test 3 test the login state of session, again mocking httpcontext the application achieve the pass.
 
 The Application has been tested in Chrome and on IIS Express Server 
-
 
 
